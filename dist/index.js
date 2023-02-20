@@ -41,146 +41,148 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var fs_1 = require("fs");
 var readline_sync_1 = __importDefault(require("readline-sync"));
-function stringify(unicode) {
+var stringify = function (unicode) {
     return String.fromCharCode(unicode);
-}
-function run(code) {
-    return __awaiter(this, void 0, void 0, function () {
-        var statements, variables, pointer, evaluate, execute, statement, evaluated;
-        var _this = this;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    statements = code.trim().split(code.includes('~') ? '~' : '\n').map(function (line) { return line.trim(); });
-                    if (statements[0] !== '어떻게' || !statements.slice(-1)[0].startsWith('이 사람이름이냐')) {
-                        throw new Error('Error: 어떻게 이 코드가 엄랭이냐ㅋㅋ');
-                    }
-                    variables = [];
-                    pointer = 0;
-                    evaluate = function (x) { return __awaiter(_this, void 0, void 0, function () {
-                        var n, answer;
-                        return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0:
-                                    n = 0;
-                                    if (!x.includes(' ')) return [3 /*break*/, 2];
-                                    return [4 /*yield*/, Promise.all(x.split(' ').map(evaluate))];
-                                case 1: return [2 /*return*/, (_a.sent()).reduce(function (a, b) { return a * b; })];
-                                case 2:
-                                    if (x.includes('식?')) {
-                                        answer = readline_sync_1.default.question();
-                                        x = x.replace('식?', '.'.repeat(Number(answer)));
-                                    }
-                                    if (x.includes('어'))
-                                        n += variables[x.split('어').length - 1];
-                                    if (x.includes('.'))
-                                        n += x.split('.').length - 1;
-                                    if (x.includes(','))
-                                        n -= x.split(',').length - 1;
-                                    return [2 /*return*/, n];
-                            }
-                        });
-                    }); };
-                    execute = function (statement) { return __awaiter(_this, void 0, void 0, function () {
-                        var condition, variablePointer, setteeValue, _a, _b, _c, _d, _e, _f;
-                        return __generator(this, function (_g) {
-                            switch (_g.label) {
-                                case 0:
-                                    if (!(statement.includes('동탄') && statement.includes('?'))) return [3 /*break*/, 2];
-                                    return [4 /*yield*/, evaluate(statement.substring(2, statement.lastIndexOf('?') + 1))];
-                                case 1:
-                                    condition = _g.sent();
-                                    if (condition === 0) {
-                                        return [2 /*return*/, execute(statement.substr(statement.lastIndexOf('?') + 1))];
-                                    }
-                                    return [2 /*return*/];
-                                case 2:
-                                    if (!statement.includes('엄')) return [3 /*break*/, 4];
-                                    variablePointer = statement.split('엄')[0].split('어').length;
-                                    return [4 /*yield*/, evaluate(statement.split('엄')[1])];
-                                case 3:
-                                    setteeValue = _g.sent();
-                                    variables[variablePointer] = setteeValue;
-                                    _g.label = 4;
-                                case 4:
-                                    if (!(statement.includes('식') && statement[statement.length - 1] === '!')) return [3 /*break*/, 6];
-                                    _b = (_a = process.stdout).write;
-                                    _c = String;
-                                    return [4 /*yield*/, evaluate(statement.slice(1, -1))];
-                                case 5:
-                                    _b.apply(_a, [_c.apply(void 0, [_g.sent()])]);
-                                    _g.label = 6;
-                                case 6:
-                                    if (!(statement.includes('식') && statement[statement.length - 1] === 'ㅋ')) return [3 /*break*/, 8];
-                                    if (statement === '식ㅋ')
-                                        process.stdout.write('\n');
-                                    _e = (_d = process.stdout).write;
-                                    _f = stringify;
-                                    return [4 /*yield*/, evaluate(statement.slice(1, -1))];
-                                case 7:
-                                    _e.apply(_d, [_f.apply(void 0, [_g.sent()])]);
-                                    _g.label = 8;
-                                case 8:
-                                    if (!statement.includes('준')) return [3 /*break*/, 10];
-                                    return [4 /*yield*/, evaluate(statement.split('준')[1])];
-                                case 9:
-                                    pointer = (_g.sent()) - 1;
-                                    _g.label = 10;
-                                case 10:
-                                    if (statement.indexOf('화이팅!') === 0) {
-                                        return [2 /*return*/, evaluate(statement.split('화이팅!')[1])];
-                                    }
-                                    return [2 /*return*/];
-                            }
-                        });
-                    }); };
-                    _a.label = 1;
-                case 1:
-                    if (!!statements[pointer].startsWith('이 사람이름이냐')) return [3 /*break*/, 3];
-                    statement = statements[pointer++];
-                    return [4 /*yield*/, execute(statement)];
-                case 2:
-                    evaluated = _a.sent();
-                    if (evaluated)
-                        return [2 /*return*/, evaluated];
-                    return [3 /*break*/, 1];
-                case 3: return [2 /*return*/];
-            }
-        });
+};
+var run = function (code) { return __awaiter(void 0, void 0, void 0, function () {
+    var variables, pointer, statements, evaluate, execute, statement, evaluated;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                variables = [];
+                pointer = 0;
+                statements = code.trim().split(code.includes('UuU') ? 'UuU' : '\n').map(function (line) { return line.trim(); });
+                // console.log(statements);
+                if (statements[0] !== '비혼주의는' || !statements.slice(-1)[0].startsWith('로 완성이 돼요')) {
+                    throw new Error('Error: 이건 재즈가 아니야.');
+                }
+                evaluate = function (x) { return __awaiter(void 0, void 0, void 0, function () {
+                    var n, answer;
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0:
+                                n = 0;
+                                // 콘솔에서 정수 입력 받기.
+                                if (x.includes('샤빱뚜비두밥?')) {
+                                    answer = readline_sync_1.default.question();
+                                    x = x.replace('샤빱뚜비두밥?', 'O'.repeat(Number(answer)));
+                                }
+                                // 변수 사용
+                                if (x.includes('.'))
+                                    n += variables[x.split('.').length - 1];
+                                // 연산자
+                                if (x.includes('O'))
+                                    n += x.split('O').length - 1;
+                                if (x.includes('o'))
+                                    n -= x.split('o').length - 1;
+                                if (!x.includes('8')) return [3 /*break*/, 2];
+                                return [4 /*yield*/, Promise.all(x.split('8').map(evaluate))];
+                            case 1: return [2 /*return*/, (_a.sent()).reduce(function (a, b) { return a * b; })];
+                            case 2: return [2 /*return*/, n];
+                        }
+                    });
+                }); };
+                execute = function (statement) { return __awaiter(void 0, void 0, void 0, function () {
+                    var condition, variablePointer, _a, _b, _c, _d, _e, _f, _g, _h;
+                    return __generator(this, function (_j) {
+                        switch (_j.label) {
+                            case 0:
+                                if (!(statement.includes('대머리') && statement.includes('?'))) return [3 /*break*/, 2];
+                                return [4 /*yield*/, evaluate(statement.substring(2, statement.lastIndexOf('?') + 1))];
+                            case 1:
+                                condition = _j.sent();
+                                if (condition === 0) {
+                                    return [2 /*return*/, execute(statement.substring(statement.lastIndexOf('?') + 1))];
+                                }
+                                return [2 /*return*/];
+                            case 2:
+                                if (!statement.includes('ㅇ')) return [3 /*break*/, 4];
+                                variablePointer = statement.split('ㅇ')[0].split('.').length;
+                                _a = variables;
+                                _b = variablePointer;
+                                return [4 /*yield*/, evaluate(statement.split('ㅇ')[1])];
+                            case 3:
+                                _a[_b] = _j.sent();
+                                _j.label = 4;
+                            case 4:
+                                if (!(statement.includes('샤빱뚜비두밥') && statement[statement.length - 1] === '!')) return [3 /*break*/, 6];
+                                _d = (_c = process.stdout).write;
+                                _e = String;
+                                return [4 /*yield*/, evaluate(statement.slice(6, -1))];
+                            case 5:
+                                _d.apply(_c, [_e.apply(void 0, [_j.sent()])]);
+                                _j.label = 6;
+                            case 6:
+                                if (!(statement.includes('샤빱뚜비두밥') && statement[statement.length - 1] === 'ㅋ')) return [3 /*break*/, 8];
+                                if (statement === '샤빱뚜비두밥ㅋ')
+                                    process.stdout.write('\n');
+                                _g = (_f = process.stdout).write;
+                                _h = stringify;
+                                return [4 /*yield*/, evaluate(statement.slice(1, -1))];
+                            case 7:
+                                _g.apply(_f, [_h.apply(void 0, [_j.sent()])]);
+                                _j.label = 8;
+                            case 8:
+                                if (!statement.includes('주')) return [3 /*break*/, 10];
+                                return [4 /*yield*/, evaluate(statement.split('주')[1])];
+                            case 9:
+                                pointer = (_j.sent()) - 1;
+                                _j.label = 10;
+                            case 10:
+                                if (statement.indexOf('하남자=') === 0) {
+                                    return [2 /*return*/, evaluate(statement.split('하남자=')[1])];
+                                }
+                                return [2 /*return*/];
+                        }
+                    });
+                }); };
+                _a.label = 1;
+            case 1:
+                if (!!statements[pointer].startsWith('로 완성이 돼요')) return [3 /*break*/, 3];
+                // console.log('statement = '+ typeof statements[pointer+1]);
+                // console.log('pointer = ' + pointer);
+                pointer += 1;
+                statement = statements[pointer];
+                return [4 /*yield*/, execute(statement)];
+            case 2:
+                evaluated = _a.sent();
+                if (evaluated)
+                    return [2 /*return*/, evaluated];
+                return [3 /*break*/, 1];
+            case 3: return [2 /*return*/];
+        }
     });
-}
-function bootstrap(path) {
-    return __awaiter(this, void 0, void 0, function () {
-        var e_1, _a, e_2;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
-                case 0:
-                    _b.trys.push([0, 7, , 8]);
-                    _b.label = 1;
-                case 1:
-                    _b.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, fs_1.promises.access(path)];
-                case 2:
-                    _b.sent();
-                    return [3 /*break*/, 4];
-                case 3:
-                    e_1 = _b.sent();
-                    throw new Error("Error: ".concat(path, "\uAC00 \uC5B4\uB5BB\uAC8C \uD30C\uC77C\uC774\uB984\uC774\uB0D0\u314B\u314B"));
-                case 4:
-                    _a = run;
-                    return [4 /*yield*/, fs_1.promises.readFile(path, 'utf-8')];
-                case 5: return [4 /*yield*/, _a.apply(void 0, [(_b.sent())])];
-                case 6:
-                    _b.sent();
-                    return [3 /*break*/, 8];
-                case 7:
-                    e_2 = _b.sent();
-                    process.stderr.write("".concat(e_2.message, "\n"));
-                    return [3 /*break*/, 8];
-                case 8: return [2 /*return*/];
-            }
-        });
+}); };
+var bootstrap = function (path) { return __awaiter(void 0, void 0, void 0, function () {
+    var e_1, _a, e_2;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                _b.trys.push([0, 7, , 8]);
+                _b.label = 1;
+            case 1:
+                _b.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, fs_1.promises.access(path)];
+            case 2:
+                _b.sent();
+                return [3 /*break*/, 4];
+            case 3:
+                e_1 = _b.sent();
+                throw new Error("Error: ".concat(path, "\uB294 \uC77D\uD600\uC9C0\uC9C0 \uC54A\uC544."));
+            case 4:
+                _a = run;
+                return [4 /*yield*/, fs_1.promises.readFile(path, 'utf-8')];
+            case 5: return [4 /*yield*/, _a.apply(void 0, [(_b.sent())])];
+            case 6:
+                _b.sent();
+                return [3 /*break*/, 8];
+            case 7:
+                e_2 = _b.sent();
+                process.stderr.write("".concat(e_2.message, "\n"));
+                return [3 /*break*/, 8];
+            case 8: return [2 /*return*/];
+        }
     });
-}
+}); };
 if (process.argv[2])
     bootstrap(process.argv[2]);
